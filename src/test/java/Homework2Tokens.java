@@ -33,5 +33,6 @@ public class Homework2Tokens {
                 .jsonPath();
 
         Assertions.assertEquals("Job is ready", completedTaskAnswer.get("status").toString());
+        Assertions.assertNotNull(completedTaskAnswer.get("result").toString());
     }
 }
