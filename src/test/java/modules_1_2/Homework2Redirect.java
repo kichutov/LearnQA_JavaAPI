@@ -1,3 +1,5 @@
+package modules_1_2;
+
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
