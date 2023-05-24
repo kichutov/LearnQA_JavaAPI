@@ -48,4 +48,13 @@ public class ApiCoreRequests {
                 .put(url)
                 .andReturn();
     }
+
+    @Step("Make a DELETE-request with koen and auth cookie")
+    public Response makeDeleteRequest(String url,String token, String cookie){
+        return given()
+                .header("x-csrf-token", token)
+                .cookie("auth_sid",cookie)
+                .delete(url)
+                .andReturn();
+    }
 }
