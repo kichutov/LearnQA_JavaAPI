@@ -17,6 +17,8 @@ import java.util.Map;
 @Feature("Authorization")
 public class UserRegisterTest extends BaseTestCase {
 
+    private static final String URL = "https://playground.learnqa.ru/api/user/";
+
     private ApiCoreRequests apiCoreRequests = new ApiCoreRequests();
 
 
@@ -33,7 +35,7 @@ public class UserRegisterTest extends BaseTestCase {
         authData.put("firstName", "learnqa");
         authData.put("lastName", "learnqa");
 
-        Response response = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", authData);
+        Response response = apiCoreRequests.makePostRequest(URL, authData);
 
 
         Assetions.assertResponseCodeEquals(response, 400);
@@ -55,7 +57,7 @@ public class UserRegisterTest extends BaseTestCase {
         userData.put("firstName", "learnqa");
         userData.put("lastName", "learnqa");
 
-        Response response = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
+        Response response = apiCoreRequests.makePostRequest(URL, userData);
 
         Assetions.assertResponseCodeEquals(response, 200);
         Assetions.assertJsonHasKey(response, "id");
@@ -78,7 +80,7 @@ public class UserRegisterTest extends BaseTestCase {
         userData.put("firstName", "learnqa");
         userData.put("lastName", "learnqa");
 
-        Response response = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
+        Response response = apiCoreRequests.makePostRequest(URL, userData);
 
         Assetions.assertResponseCodeEquals(response, 400);
         Assetions.assertResponseTextEquals(response, "Invalid email format");
@@ -102,7 +104,7 @@ public class UserRegisterTest extends BaseTestCase {
         userData.put("firstName", "learnqa");
         userData.put("lastName", "learnqa");
         userData.remove(nameField);
-        Response response = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
+        Response response = apiCoreRequests.makePostRequest(URL, userData);
 
         Assetions.assertResponseTextEquals(response, "The following required params are missed: " + nameField);
     }
@@ -123,7 +125,7 @@ public class UserRegisterTest extends BaseTestCase {
         userData.put("username", shortName);
         userData.put("firstName", "learnqa");
         userData.put("lastName", "learnqa");
-        Response response = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
+        Response response = apiCoreRequests.makePostRequest(URL, userData);
         Assetions.assertResponseTextEquals(response, "The value of 'username' field is too short");
     }
 
@@ -141,7 +143,7 @@ public class UserRegisterTest extends BaseTestCase {
         userData.put("username", longName);
         userData.put("firstName", "learnqa");
         userData.put("lastName", "learnqa");
-        Response response = apiCoreRequests.makePostRequest("https://playground.learnqa.ru/api/user/", userData);
+        Response response = apiCoreRequests.makePostRequest(URL, userData);
         Assetions.assertResponseTextEquals(response, "The value of 'username' field is too long");
     }
 
