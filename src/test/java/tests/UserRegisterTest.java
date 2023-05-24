@@ -60,7 +60,7 @@ public class UserRegisterTest extends BaseTestCase {
         Response response = apiCoreRequests.makePostRequest(URL, userData);
 
         Assetions.assertResponseCodeEquals(response, 200);
-        Assetions.assertJsonHasKey(response, "id");
+        Assetions.assertJsonHasField(response, "id");
     }
 
 
