@@ -30,4 +30,22 @@ public class ApiCoreRequests {
                 .post(url)
                 .andReturn();
     }
+
+    @Step("Make a PUT-request without koen and auth cookie")
+    public Response makePutRequestWithoutAuth(String url, Map<String,String> editData){
+        return given()
+                .body(editData)
+                .put(url)
+                .andReturn();
+    }
+
+    @Step("Make a PUT-request with koen and auth cookie")
+    public Response makePutRequest(String url,String token, String cookie, Map<String,String> editData){
+        return given()
+                .header("x-csrf-token", token)
+                .cookie("auth_sid",cookie)
+                .body(editData)
+                .put(url)
+                .andReturn();
+    }
 }
