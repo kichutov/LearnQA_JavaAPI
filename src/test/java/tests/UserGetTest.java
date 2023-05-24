@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import lib.ApiCoreRequests;
@@ -26,6 +24,9 @@ public class UserGetTest extends BaseTestCase {
     @Test
     @Description("Тест из урока получение данных")
     @DisplayName("Тест из урока получение данных")
+    @Severity(SeverityLevel.CRITICAL)
+    @Flaky
+    @Link("https://playground.learnqa.ru")
     public void testGetAnotherUserDataNotAuth(){
         Response responseUserData = RestAssured.
                 get("https://playground.learnqa.ru/api/user/" + MY_ID)
